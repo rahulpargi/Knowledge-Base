@@ -9,8 +9,26 @@ app.set('view engine','pug');
 
 //Home Route
 app.get('/',function(req,res){
+    let articles=[
+        {
+            id:1,
+            title:'Article One',
+            body:'This is article one'
+        },
+        {
+            id:2,
+            title:'Article Two',
+            body:'This is article Two'
+        },
+        {
+            id:3,
+            title:'Article Three',
+            body:'This is article Three'
+        },
+    ];
     res.render('index',{
-        title:'Articles'
+        title:'Articles',
+        articles:articles
     });
 });
 
