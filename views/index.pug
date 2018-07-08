@@ -2,6 +2,6 @@ extends layout
 
 block content
     h1 #{title}
-    ul
+    ul.collection
         each article, i in articles
-            li= article.title
+            li.collection-item= article.title

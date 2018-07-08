@@ -29,7 +29,10 @@ app.set('view engine','pug');
 app.use(bodyParser.urlencoded({ extended: false }))
  
 // parse application/json
-app.use(bodyParser.json())
+app.use(bodyParser.json());
+
+//Setting Public Folder
+app.use(express.static(path.join(__dirname,'public')));
 
 //Home Route
 app.get('/',function(req,res){

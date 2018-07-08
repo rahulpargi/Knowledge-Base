@@ -3,13 +3,31 @@ extends layout
 block content
     h1 #{title}
     form(action='/articles/add' method='POST')
-        #form-group
-            label Title:
-            input.form-control(name='title',type='text')
-        #form-group
-            label Author:
-            input.form-control(name='author',type='text')
-        #form-group
-            label Body:
-            textarea.form-control(name='body')
-        input.btn.btn-primary(type='submit',value='Submit')
+        .row
+            form.col.s12
+                .row
+                .input-field.col.s6
+                    input#first_name.validate(placeholder='Placeholder', type='text')
+                    label(for='first_name') First Name
+                .input-field.col.s6
+                    input#last_name.validate(type='text')
+                    label(for='last_name') Last Name
+                .row
+                .input-field.col.s12
+                    input#disabled.validate(disabled='', value='I am not editable', type='text')
+                    label(for='disabled') Disabled
+                .row
+                .input-field.col.s12
+                    input#password.validate(type='password')
+                    label(for='password') Password
+                .row
+                .input-field.col.s12
+                    input#email.validate(type='email')
+                    label(for='email') Email
+                .row
+                .col.s12
+                    | This is an inline input field:
+                    .input-field.inline
+                    input#email_inline.validate(type='email')
+                    label(for='email_inline') Email
+                    span.helper-text(data-error='wrong', data-success='right') Helper text
