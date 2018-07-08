@@ -4,6 +4,16 @@ const mongoose=require('mongoose');
 
 mongoose.connect('mongodb://localhost/knowledgebase');
 let db=mongoose.connection;
+
+//checking connection
+db.once('open',function(){
+    console.log('Connected to mongoDB');
+});
+//Checking for db error
+db.on('error',function(error){
+    console.log(error);
+
+});
 //init app
 const app=express();
 
