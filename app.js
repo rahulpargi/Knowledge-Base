@@ -1,11 +1,16 @@
 const express=require('express');
 const path=require('path');
+const mongoose=require('mongoose');
+
+mongoose.connect('mongodb://localhost/knowledgebase');
+let db=mongoose.connection;
 //init app
 const app=express();
 
 //Load View Engine
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','pug');
+
 
 //Home Route
 app.get('/',function(req,res){
