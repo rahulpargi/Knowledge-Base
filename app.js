@@ -1,6 +1,7 @@
 const express=require('express');
 const path=require('path');
 const mongoose=require('mongoose');
+const bodyParser=require('body-parser');
 
 mongoose.connect('mongodb://localhost/knowledgebase');
 let db=mongoose.connection;
@@ -54,9 +55,19 @@ app.get('/articles/add',function(req,res){
 });
 app.post('/articles/add',function(req,res){
     let article=new Article();
-    Article.title=req.body.title;
-    console.log(req.body.title);
-    return;
+    article.title=req.body.title;
+    article.author=req.body.author;
+    article.body=req.body.body;
+
+    article.save(function(err){
+        if(err){
+            console.log(err);
+            return;
+        }else{
+            res.redirect('/');
+        }
+    });
+    
 
 });
 
