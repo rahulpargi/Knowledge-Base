@@ -46,8 +46,15 @@ app.get('/',function(req,res){
             });
         }   
     });
-    
-    
+});
+
+//Getting single Article
+app.get('/article/:id',function(req,res){
+    Article.findById(req.params.id,function(err,article){
+        res.render('article',{
+            article:article
+        });
+    });
 });
 
 //Add Route
