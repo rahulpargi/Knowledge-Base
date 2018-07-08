@@ -24,6 +24,11 @@ const Article=require('./models/article');
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','pug');
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+ 
+// parse application/json
+app.use(bodyParser.json())
 
 //Home Route
 app.get('/',function(req,res){
@@ -46,6 +51,13 @@ app.get('/articles/add',function(req,res){
     res.render('add_articles',{
         title:'Add Articles'
     });
+});
+app.post('/articles/add',function(req,res){
+    let article=new Article();
+    Article.title=req.body.title;
+    console.log(req.body.title);
+    return;
+
 });
 
 app.listen(3000,function(){
